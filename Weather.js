@@ -44,24 +44,24 @@ const weathers = [
 const iconComponent = (icon) => {
   if (icon === "sunny") {
     return `<div>
-        <img src="./rainy.png" alt="sunny" />
+        <img src="./rainy.png" alt="sunny" class="weather-icon"/>
       </div>`;
   } else if (icon === "rainy") {
     return `<div>
-        <img src="./rainy.png" alt="rainy" />
+        <img src="./rainy.png" alt="rainy" class="weather-icon"/>
       </div>`;
   } else if (icon === "cloudy") {
     return `<div>
-        <img src="./rainy.png" alt="cloudy" />
+        <img src="./rainy.png" alt="cloudy" class="weather-icon"/>
       </div>`;
   }
 };
 
 const isItDay = (day) => {
   if (day === "day") {
-    return "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0";
+    return "./day.jpg";
   } else {
-    return "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0";
+    return "./night.jpg";
   }
 };
 

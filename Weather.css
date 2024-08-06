@@ -16,13 +16,13 @@ body {
 .background-iphone {
   display: flex;
   position: absolute;
-  margin-top: 60px;
-  height: 900px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-image: url(./Mockup.png);
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  inset: 0;
+  background-size: cover; /* Ensure the image covers the entire element */
+  width: 447px;
+  height: 900px;
   z-index: -1;
 }
 
@@ -33,7 +33,7 @@ body {
   gap: 20px;
   padding: 20px;
   overflow: scroll;
-  margin: 90px;
+  margin: 160px;
 }
 
 .weather-title {

@@ -93,3 +93,41 @@ const render = (data) => {
 };
 
 render(weathers);
+
+// TODO Weather API
+
+document.getElementById("search-input").addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    const locationToFind = event.target.value;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationToFind}&units=Metric&appid=7c91776fb1267161889e298c3e7ceb4b`;
+
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        const weatherResult = document.getElementById("weather-result");
+        weatherResult.innerHTML = ""; // Clear previous results
+
+        if (data.cod === 200) {
+          const weatherInfo = `
+            <div class="weather-info">
+              <h2>${data.name}, ${data.sys.country}</h2>
+              <p>Temperature: ${data.main.temp} °C</p>
+              <p>Weather: ${data.weather[0].description}</p>
+              <p>Humidity: ${data.main.humidity}%</p>
+              <p>Wind Speed: ${data.wind.speed} m/s</p>
+            </div>
+          `;
+          weatherResult.innerHTML = weatherInfo;
+        } else {
+          weatherResult.innerHTML =
+            "<p>Location not found. Please try again.</p>";
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        const weatherResult = document.getElementById("weather-result");
+        weatherResult.innerHTML =
+          "<p>Error fetching data. Please try again later.</p>";
+      });
+  }
+});
